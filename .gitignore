@@ -1,2 +1,7 @@
 *.json
+!library.json
 .vscode
+*.o
+*.d
+*.out
+docs/
