@@ -34,7 +34,6 @@ arduino-cli lib install --git-url https://github.com/sdvnci/ESP-Environment-Driv
 
 (`--git-url` needs `library.enable_unsafe_install: true` in the arduino-cli config.) A Library Manager listing is planned.
 
-**As a submodule** - see [Using It From ESP-Sky-Imager](#using-it-from-esp-sky-imager).
 
 ### Requirements
 
@@ -126,17 +125,15 @@ About 3 KB of that is the shared bus manager and sensor base class, paid once ho
 
 ## Using It From ESP-Sky-Imager
 
-Arduino only compiles sources in a sketch's root and its `src/` folder, so add this repo as a submodule **under `src/`**:
+Install it as a library, pinned to a release, as in [Installation](#installation). ESP-Sky-Imager's CI does the same:
 
-```bash
-git submodule add https://github.com/sdvnci/ESP-Environment-Drivers src/ESP-Environment-Drivers
+```yaml
+libraries: |
+  - source-url: https://github.com/sdvnci/ESP-Environment-Drivers.git
+    version: v1.0.0
 ```
 
-```cpp
-#include "src/ESP-Environment-Drivers/src/ESPEnvironmentDrivers.h"
-```
-
-Or install it as a library (it has a `library.properties`) and `#include <ESPEnvironmentDrivers.h>`.
+Don't vendor it as a submodule under the sketch's `src/` folder. Arduino compiles everything under `src/` recursively, including this repo's `tests/`, which need AUnit and fail to build.
 
 The camera driver sets up its own I2C (SCCB) port. Keep the sensors on a different bus from the camera, or check which port your camera config claims.
 
