@@ -1,0 +1,79 @@
+#######################################
+# Syntax Coloring Map for ESP-Environment-Drivers
+#######################################
+
+# Datatypes (KEYWORD1)
+I2CManager	KEYWORD1
+I2CSensor	KEYWORD1
+I2CBus	KEYWORD1
+I2CError	KEYWORD1
+SHT31	KEYWORD1
+BMP3XX	KEYWORD1
+MPU6050	KEYWORD1
+MPU_XYZ	KEYWORD1
+
+# Methods and Functions (KEYWORD2)
+init	KEYWORD2
+update	KEYWORD2
+lastError	KEYWORD2
+isInitialized	KEYWORD2
+reading	KEYWORD2
+getTemperature	KEYWORD2
+getHumidity	KEYWORD2
+getPressure	KEYWORD2
+getAltitude	KEYWORD2
+reset	KEYWORD2
+enableHeater	KEYWORD2
+disableHeater	KEYWORD2
+isHeaterEnabled	KEYWORD2
+readStatus	KEYWORD2
+clearStatus	KEYWORD2
+setMode	KEYWORD2
+configure	KEYWORD2
+chipId	KEYWORD2
+begin_I2C	KEYWORD2
+performReading	KEYWORD2
+readTemperature	KEYWORD2
+readPressure	KEYWORD2
+readAltitude	KEYWORD2
+chipID	KEYWORD2
+setTemperatureOversampling	KEYWORD2
+setPressureOversampling	KEYWORD2
+setIIRFilterCoeff	KEYWORD2
+powerOn	KEYWORD2
+setLPF	KEYWORD2
+setSensitivity	KEYWORD2
+setAccelRange	KEYWORD2
+calibrateGyro	KEYWORD2
+readGyro	KEYWORD2
+readGyroSampled	KEYWORD2
+readAccel	KEYWORD2
+readTilt	KEYWORD2
+getInstance	KEYWORD2
+registerSensor	KEYWORD2
+unregisterSensor	KEYWORD2
+clear	KEYWORD2
+deviceCount	KEYWORD2
+busClock	KEYWORD2
+wire	KEYWORD2
+busMutex	KEYWORD2
+dewPoint	KEYWORD2
+altitude	KEYWORD2
+seaLevelPressure	KEYWORD2
+mean	KEYWORD2
+stddev	KEYWORD2
+quartiles	KEYWORD2
+removeOutliers	KEYWORD2
+robustMean	KEYWORD2
+toString	KEYWORD2
+
+# Namespaces and Constants (LITERAL1)
+sht3x	LITERAL1
+bmp3	LITERAL1
+mpu	LITERAL1
+env	LITERAL1
+stats	LITERAL1
+i2cs	LITERAL1
+SHT31_ADDRESS	LITERAL1
+MPU6050_ADDR	LITERAL1
+MPU6050_ADDR_ALT	LITERAL1

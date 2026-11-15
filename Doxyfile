@@ -1,0 +1,20 @@
+# Minimal Doxygen config - run `doxygen` in the repo root, output in docs/html.
+PROJECT_NAME           = "ESP-Environment-Drivers"
+PROJECT_NUMBER         = 1.0.0
+PROJECT_BRIEF          = "Thread-safe I2C sensor drivers for the ESP32"
+OUTPUT_DIRECTORY       = docs
+INPUT                  = src README.md CHANGELOG.md
+FILE_PATTERNS          = *.h *.hpp *.cpp *.md
+RECURSIVE              = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+EXCLUDE_SYMBOLS        = "*::{anonymous}*"
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+PREDEFINED             = ARDUINO=100
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+QUIET                  = YES
+WARN_IF_UNDOCUMENTED   = NO

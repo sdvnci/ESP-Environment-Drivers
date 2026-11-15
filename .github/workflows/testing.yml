@@ -1,6 +1,6 @@
 name: Unit Tests
 
-on: 
+on:
   push:
   pull_request:
 
@@ -17,15 +17,14 @@ jobs:
           sudo apt-get install -y build-essential
 
       - name: Clone AUnit
-        run: |
-          git clone https://github.com/bxparks/AUnit.git
+        run: git clone --depth 1 --branch v1.7.1 https://github.com/bxparks/AUnit.git
 
       - name: Clone EpoxyDuino
-        run: |
-          git clone https://github.com/bxparks/EpoxyDuino.git
+        run: git clone --depth 1 --branch v1.6.0 https://github.com/bxparks/EpoxyDuino.git
 
       - name: Build and run tests
         run: |
           cd tests
-          make EPOXY_DUINO_DIR=../EpoxyDuino AUNIT_DIR=../AUnit
-          ./tests.out
+          make -j"$(nproc)" EPOXY_DUINO_DIR=../EpoxyDuino AUNIT_DIR=../AUnit
+          ./tests.out | tee results.txt
+          grep -q " 0 failed" results.txt

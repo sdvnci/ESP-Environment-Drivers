@@ -1,0 +1,53 @@
+name: Library
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Arduino Lint
+        uses: arduino/arduino-lint-action@v1
+        with:
+          project-type: library
+          library-manager: submit
+          compliance: strict
+
+  versions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check versions match
+        run: |
+          properties=$(sed -n 's/^version=//p' library.properties)
+          json=$(python3 -c "import json; print(json.load(open('library.json'))['version'])")
+          header=$(sed -n 's/^#define ESP_ENVIRONMENT_DRIVERS_VERSION "\(.*\)"/\1/p' src/ESPEnvironmentDrivers.h)
+          doxygen=$(sed -n 's/^PROJECT_NUMBER *= *//p' Doxyfile)
+          echo "library.properties=$properties library.json=$json header=$header Doxyfile=$doxygen"
+          [ "$properties" = "$json" ] && [ "$json" = "$header" ] && [ "$header" = "$doxygen" ]
+          grep -q "^## $properties$" CHANGELOG.md || { echo "CHANGELOG.md has no entry for $properties"; exit 1; }
+
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build docs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen
+          doxygen Doxyfile
+
+      - name: Upload docs
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs
+          path: docs/html

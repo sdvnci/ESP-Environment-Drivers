@@ -1,0 +1,31 @@
+{
+  "name": "ESP-Environment-Drivers",
+  "version": "1.0.0",
+  "description": "Thread-safe I2C drivers for the SHT31, BMP388/BMP390 and MPU6050 on the ESP32. Transactions are serialised per bus with FreeRTOS mutexes, so sensors sharing a bus can be read from different tasks. No Adafruit dependencies.",
+  "keywords": "sensor, i2c, sht31, sht3x, bmp388, bmp390, bmp3xx, mpu6050, barometer, humidity, freertos, thread-safe, weather",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdvnci/ESP-Environment-Drivers.git"
+  },
+  "authors": [
+    {
+      "name": "Tadj Cazaubon",
+      "email": "tadj.d.cazaubon@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "license": "BUSL-1.1",
+  "homepage": "https://github.com/sdvnci/ESP-Environment-Drivers",
+  "frameworks": "arduino",
+  "platforms": "espressif32",
+  "headers": "ESPEnvironmentDrivers.h",
+  "export": {
+    "exclude": [
+      "tests",
+      ".github",
+      "assets",
+      "thumbnail.png",
+      "Doxyfile"
+    ]
+  }
+}
